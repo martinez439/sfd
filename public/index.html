@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kickball Signups</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Kickball Signups</h1>
+    <table id="ordersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Billing Email</th>
+                <th>Billing Phone</th>
+                <th>Player Names</th>
+                <th>Teammate Request</th>
+                <th>Over 14</th>
+                <th>Team Name</th>
+                <th>Date Paid</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        fetch('/orders')
+            .then(response => response.json())
+            .then(orders => {
+                const tableBody = document.querySelector('#ordersTable tbody');
+                orders.forEach(order => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${order.id}</td>
+                        <td>${order.billing_email}</td>
+                        <td>${order.billing_phone}</td>
+                        <td>${order.playernames_ || 'N/A'}</td>
+                        <td>${order.teammatereq_ || 'N/A'}</td>
+                        <td>${order.over14_ || 'N/A'}</td>
+                        <td>${order.teamname_ || 'N/A'}</td>
+                        <td>${order.date_paid || 'N/A'}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching orders:', error));
+    </script>
+</body>
+
+</html>
