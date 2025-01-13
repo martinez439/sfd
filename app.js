@@ -136,6 +136,7 @@ const WooCommerce = new WooCommerceRestApi({
   consumerKey: process.env.WC_CONSUMER_KEY || "ck_8a36b6f19fc67ee056452b5ca0b73df104914f75",
   consumerSecret: process.env.WC_CONSUMER_SECRET || "cs_dc4107b0459af3c655b9a909ff739e303210698f",
   version: "wc/v3",
+  queryStringAuth: true 
 });
 
 // Initialize Express app
@@ -184,5 +185,6 @@ app.get("/", (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+ // console.log(`Server is running at http://localhost:${PORT}`);
+ console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
 });
