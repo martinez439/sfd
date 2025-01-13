@@ -38,13 +38,13 @@ app.get("/orders", async (req, res) => {
   try {
     const response = await WooCommerce.get("orders");
     const orders = response.data.map((order) => ({
-      id: order.id,
-      billing_email: order.billing.email,
-      billing_phone: order.billing.phone,
       playernames_: order.meta_data.find((meta) => meta.key === "playernames_")?.value,
       teammatereq_: order.meta_data.find((meta) => meta.key === "teammatereq_")?.value,
       over14_: order.meta_data.find((meta) => meta.key === "over14_")?.value,
       teamname_: order.meta_data.find((meta) => meta.key === "teamname_")?.value,
+      id: order.id,
+      billing_email: order.billing.email,
+      billing_phone: order.billing.phone,
       date_paid: order.date_paid,
     }));
     res.json(orders);

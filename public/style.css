@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    background-color: rgb(237, 237, 237);
 }
 
 table {
@@ -17,4 +18,53 @@ td {
 
 th {
     background-color: #f4f4f4;
+}
+
+tr:hover {
+    background-color: #14a88ac7 !important;
+}
+
+#ordersTable {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#ordersTable th {
+    background-color: #009879 !important;
+    color: #ffffff;
+    text-align: left;
+}
+
+#ordersTable th,
+#ordersTable td {
+    padding: 12px 15px;
+}
+
+#ordersTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#ordersTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#ordersTable tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+#ordersTable tbody tr.active-row {
+    font-weight: bold;
+    color: #009879 !important;
+}
+
+@media only screen and (max-width: 450px) {
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
